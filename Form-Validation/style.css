@@ -1,0 +1,40 @@
+document.querySelector('#registration-form').addEventListener('submit', function(event) {
+    event.preventDefault(); 
+
+    // Hide error messages at the start
+    document.querySelector('#name-error').style.display = 'none';
+    document.querySelector('#email-error').style.display = 'none';
+    document.querySelector('#password-error').style.display = 'none';
+
+    // Get the values from the form fields
+    const name = document.querySelector('#name').value.trim();
+    const email = document.querySelector('#email').value.trim();
+    const password = document.querySelector('#password').value.trim();
+
+    // Assume everything is good
+    let valid = true;
+
+    // Check if the name is only letters and spaces
+    if (name === "" ) {
+        document.querySelector('#name-error').style.display = 'block';
+        valid = false; // If not, it's not valid
+    }
+
+    // Check if the email looks like a proper email
+    if (email === "" ) {
+        document.querySelector('#email-error').style.display = 'block';
+        valid = false; // If not, it's not valid
+    }
+
+    // Check if the password is long enough
+    if (password === "" || password.length < 6) {
+        document.querySelector('#password-error').style.display = 'block';
+        valid = false; // If not, it's not valid
+    }
+
+    // If everything is valid, show a success message
+    if (valid) {
+        alert('Form submitted successfully!');
+        // You can add code here to actually send the form data somewhere
+    }
+});
